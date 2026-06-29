@@ -1,8 +1,9 @@
 from settings import *
 import pygame
+from player import Player
 
 pygame.init()
-
+player = Player()
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -16,6 +17,8 @@ while running == True:
         if event.type == pygame.QUIT:
             running = False
     screen.fill(BG_COLOR)
+    player.update()
+    player.draw(screen)
     pygame.display.flip()
 
 pygame.quit()
