@@ -1,11 +1,15 @@
 import pygame
 from settings import *
+from classes.character import Character
 
 class Player():
+
+
     def __init__(self):
+
         self.rect = pygame.Rect(400, 300, 40, 40)
+        self.stats = Character(name = 'Spectrum', max_hp = 100, max_mana = 50, attack = 15, resists = [])
         self.speed = 5
-        self.hp = 100
         
     def update(self):
         keys = pygame.key.get_pressed()

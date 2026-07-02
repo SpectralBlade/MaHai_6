@@ -1,7 +1,8 @@
 from settings import *
 import pygame
-from player import Player
+from classes.player import Player
 import random
+from battle import BattleManager
 from enemy import Enemy
 
 pygame.init()
@@ -22,12 +23,16 @@ artifacts_collected = 0
 
 running = True
 game_state = 'MAP'
+current_battle = None
 
 while running == True:
     clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if game_state == 'BATTLE':
+                current_battle.handle_click(event.pos)
     screen.fill(BG_COLOR)
 
     if game_state == 'MAP':
@@ -41,6 +46,7 @@ while running == True:
 
             if player.rect.colliderect(enemy):
                 game_state = 'BATTLE'
+                current_battle = BattleManager(player, enemy)
 
         if player.rect.colliderect(artifact_rect):
             artifacts_collected += 1
@@ -53,7 +59,10 @@ while running == True:
         player.draw(screen)
 
     elif game_state == 'BATTLE':
-        screen.fill((255, 0, 0))
+        screen.fill((0, 0, 0))
+        current_battle.draw(screen)
+
+
     pygame.display.flip()
 
 
