@@ -7,6 +7,10 @@ class Player():
 
     def __init__(self):
 
+        mermush = pygame.image.load('MERMUSH_V_PRAIME.png')
+
+        self.mini_mermush = pygame.transform.scale(mermush, (80, 80))
+
         self.rect = pygame.Rect(400, 300, 40, 40)
         self.stats = Character(name = 'Spectrum', max_hp = 100, max_mana = 50, attack = 15, resists = [])
         self.speed = 5
@@ -33,4 +37,4 @@ class Player():
         
 
     def draw(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), self.rect)
+        screen.blit(self.mini_mermush, self.rect)
