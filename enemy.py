@@ -4,6 +4,11 @@ from classes.character import Character
 
 class Enemy():
     def __init__(self):
+
+        masha = pygame.image.load('MASHUSHA.png')
+
+        self.mini_masha = pygame.transform.scale(masha, (80, 80))
+
         self.rect = pygame.Rect(0, 0, 40, 40)
         self.speed = 2
         self.hp = 100
@@ -20,4 +25,4 @@ class Enemy():
             self.rect.y -= self.speed
         
     def draw(self, screen):
-        pygame.draw.rect(screen, (0, 255, 0), self.rect)
+        screen.blit(self.mini_masha, self.rect)

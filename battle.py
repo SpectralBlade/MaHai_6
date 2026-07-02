@@ -2,9 +2,12 @@ from settings import *
 from classes.player import *
 from enemy import *
 import pygame
+from classes.level import Level
 
 class BattleManager():
-    def __init__(self, player, enemy):
+    def __init__(self, player: Player, level: Level):
+        self.level = level
+        self.enemies = self.level.get_current_enemies()
 
         self.font = pygame.font.SysFont('arial', 24)
 
@@ -12,13 +15,9 @@ class BattleManager():
         self.heal_button = pygame.Rect(160, 340, 80, 30)
                                 
         self.player = player
-        self.enemy = enemy
 
         player.rect.x = 150
         player.rect.y = 400
-
-        enemy.rect.x = 600
-        enemy.rect.y = 400
 
         self.turn = 'PLAYER'
 
@@ -28,13 +27,20 @@ class BattleManager():
 
     def draw(self, screen):
         self.player.draw(screen)
-        self.enemy.draw(screen)
+        enemy_x = 600
+        enemy_y = 200
+        i = 0
+        
+        for enemy in self.enemies:
+            enemy.rect.x = enemy_x
+            enemy.rect.y = enemy_y + (i * 60)
+            enemy.draw(screen)
+            enemy_hp_text = self.font.render(f'HP врага: {enemy.stats.current_hp}', True, (255, 255, 255))
+            screen.blit(enemy_hp_text, (600, 200 + (i * 60)))
+            i += 1
 
         player_hp_text = self.font.render(f'Ваш HP: {self.player.stats.current_hp}', True, (255, 255, 255))
         screen.blit(player_hp_text, (150, 450))
-
-        enemy_hp_text = self.font.render(f'HP врага: {self.enemy.stats.current_hp}', True, (255, 255, 255))
-        screen.blit(enemy_hp_text, (600, 450))
         
         if self.show_menu:
             pygame.draw.rect(screen, (30, 30, 30), (150, 300, 120, 80))
@@ -53,24 +59,25 @@ class BattleManager():
                     self.show_menu = False
             elif self.heal_button.collidepoint(mouse_pos):
                 self.player.stats.current_hp += 30
-                if self.player.stats.current_hp > 100:
+                if self.player.stats.current_hp > self.player.stats.max_hp:
                     self.player.stats.current_hp = self.player.stats.max_hp
                 self.show_menu = False
                 self.turn = 'ENEMY'
 
         else:
-            if self.enemy.rect.collidepoint(mouse_pos):
-                self.selected_target = self.enemy
-            elif self.player.rect.collidepoint(mouse_pos):
-                self.show_menu = True
+            for enemy in self.enemies:
+                if enemy.rect.collidepoint(mouse_pos):
+                    self.selected_target = enemy
+                elif self.player.rect.collidepoint(mouse_pos):
+                    self.show_menu = True
     
     def update(self):
 
-        if self.enemy.stats.current_hp <= 0:
+        if self.enemies[0].stats.current_hp <= 0:
             return 'MAP'
         
         if self.turn == 'ENEMY':
-            self.player.stats.take_damage(1000)
+            self.player.stats.take_damage(20)
             self.turn = 'PLAYER'
 
         if self.player.stats.current_hp <= 0:

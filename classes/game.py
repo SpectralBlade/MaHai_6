@@ -2,8 +2,10 @@ import pygame
 from classes.player import Player
 from enemy import Enemy
 import random
+from classes.location import Location
 from battle import BattleManager
 from settings import *
+from classes.level import Level
 
 class Game:
     def __init__(self):
@@ -17,8 +19,7 @@ class Game:
 
         self.clock = pygame.time.Clock()
 
-        self.enemies = []
-        self.enemies.append(Enemy( ))
+        self.current_location = Location((20, 30, 20), (600, 300, 50, 50), (380, 50, 50, 50))
 
         self.running = True
         self.game_state = 'MAP'
@@ -43,18 +44,19 @@ class Game:
 
             if self.game_state == 'MAP':
 
+                self.current_location.draw(self.screen)
                 self.player.update()
+                new_state = self.current_location.update(self.player)
 
-                for enemy in self.enemies.copy():
-                    if enemy.stats.current_hp <= 0:
-                        self.enemies.remove(enemy)
-                        continue
-                    enemy.update(self.player)
-                    enemy.draw(self.screen)
-
-                    if self.player.rect.colliderect(enemy):
-                        self.game_state = 'BATTLE'
-                        self.current_battle = BattleManager(self.player, enemy)
+                if new_state == 'BATTLE':
+                    test_level = Level('Тестовая арена', [[Enemy()], [Enemy(), Enemy()]])
+                    self.game_state = 'BATTLE'
+                    self.current_battle = BattleManager(self.player, test_level) 
+                    
+                elif new_state == 'NEXT_LOC':
+                    print("Телепортация в следующую комнату!")
+                    self.player.rect.x = 400
+                    self.player.rect.y = 500
                         
                 self.player.draw(self.screen)
 
