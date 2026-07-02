@@ -5,6 +5,7 @@ class Player():
     def __init__(self):
         self.rect = pygame.Rect(400, 300, 40, 40)
         self.speed = 5
+        self.hp = 100
         
     def update(self):
         keys = pygame.key.get_pressed()
@@ -16,6 +17,16 @@ class Player():
             self.rect.x += self.speed
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:
             self.rect.y += self.speed
+
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT 
+        
 
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
