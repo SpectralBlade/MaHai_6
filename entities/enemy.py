@@ -1,11 +1,12 @@
 import pygame
-from settings import *
-from classes.character import Character
+from core.settings import *
+from components.character import Character
+from core import asset_manager
 
 class Enemy():
     def __init__(self):
 
-        masha = pygame.image.load('MASHUSHA.png')
+        masha = asset_manager.get_image('MASHUSHA.png')
 
         self.mini_masha = pygame.transform.scale(masha, (80, 80))
 

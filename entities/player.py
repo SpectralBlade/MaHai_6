@@ -1,13 +1,14 @@
 import pygame
-from settings import *
-from classes.character import Character
+from core.settings import *
+from components.character import Character
+from core import asset_manager
 
 class Player():
 
 
     def __init__(self):
 
-        mermush = pygame.image.load('MERMUSH_V_PRAIME.png')
+        mermush = asset_manager.get_image('MERMUSH_V_PRAIME.png')
 
         self.mini_mermush = pygame.transform.scale(mermush, (80, 80))
 

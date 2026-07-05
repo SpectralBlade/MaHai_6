@@ -1,5 +1,5 @@
 import pygame
-from settings import *
+from core.settings import *
 
 class Location:
     def __init__(self, bg_color, battle_gate_rect, next_gate_rect, level_data=None):
