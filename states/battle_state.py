@@ -1,4 +1,3 @@
-import pygame
 from states.base_state import GameState
 from states.battle import BattleManager
 
@@ -13,10 +12,8 @@ class BattleState(GameState):
 
     def handle_events(self, events):
         for event in events:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if self.battle_manager:
-                        self.battle_manager.handle_click(event.pos)
+            if self.battle_manager:
+                self.battle_manager.handle_event(event)
 
     def update(self):
         if not self.battle_manager:
