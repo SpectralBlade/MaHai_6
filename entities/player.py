@@ -1,14 +1,27 @@
 import pygame
 from core.settings import *
 from components.character import Character
-from core import asset_manager
+from core import asset_manager, item_manager
+from components.inventory import Inventory
+
+from components.item import Consumable
 
 class Player():
 
 
     def __init__(self):
-
+        
+        self.inventory = Inventory(capacity=20) 
+        
         mermush = asset_manager.get_image('MERMUSH_V_PRAIME.png')
+
+        potion = item_manager.create_item('health_potion_01')
+        if potion:
+            self.inventory.add_item(potion, amount=5)
+            
+        sword = item_manager.create_item('rusty_sword')
+        if sword:
+            self.inventory.add_item(sword, amount=1)
 
         self.mini_mermush = pygame.transform.scale(mermush, (80, 80))
 

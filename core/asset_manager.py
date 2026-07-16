@@ -2,13 +2,11 @@ import pygame
 import os
 
 _images = {}
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def get_image(filename: str) -> pygame.Surface:
-    """
-    Загружает изображение по имени файла или возвращает из кэша, если оно уже загружено.
-    """
     if filename not in _images:
-        path = os.path.join('assets', 'images', filename)
+        path = os.path.join(ROOT_DIR, 'assets', 'images', filename)
         
         try:
             image = pygame.image.load(path).convert_alpha()

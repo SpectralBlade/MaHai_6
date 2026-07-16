@@ -1,6 +1,7 @@
 import pygame
 from core.settings import *
 from entities.player import Player
+from core import item_manager
 
 from states.map_state import MapState
 from states.battle_state import BattleState
@@ -9,6 +10,7 @@ from states.game_over_state import GameOverState
 class Game:
     def __init__(self):
         pygame.init()
+        item_manager.init()
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("Mermush RPG")
@@ -24,7 +26,6 @@ class Game:
             'GAME_OVER': GameOverState(self)
         }
         
-        # Задаем стартовое состояние
         self.current_state = self.states['MAP']
         self.current_state.enter()
 

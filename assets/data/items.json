@@ -1,0 +1,22 @@
+{
+    "health_potion_01": {
+        "type": "Consumable",
+        "name": "Малое зелье лечения",
+        "rarity": "Common",
+        "sell_cost": 15,
+        "buy_cost": 30,
+        "image_filename": "First_Fractal.png",
+        "effect_type": "heal",
+        "effect_value": 30
+    },
+    "rusty_sword": {
+        "type": "Equipment",
+        "name": "Ржавый меч",
+        "rarity": "Common",
+        "sell_cost": 10,
+        "buy_cost": 25,
+        "image_filename": "First_Fractal.png",
+        "stats_bonus": {"attack": 5},
+        "enchantable": false
+    }
+}

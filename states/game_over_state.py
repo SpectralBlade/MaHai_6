@@ -15,7 +15,7 @@ class GameOverState(GameState):
 
     def draw(self, screen):
         screen.fill((100, 0, 0)) 
-        game_over_text = self.font.render('Волосня поглотила вас...', True, (255, 255, 255))
+        game_over_text = self.font.render('Кусты поглотили вас...', True, (255, 255, 255))
         press_space = self.font.render('Нажмите ПРОБЕЛ, чтобы продолжить', True, (255, 255, 255))
         screen.blit(press_space, (200, 200))
         screen.blit(game_over_text, (200, 300))
