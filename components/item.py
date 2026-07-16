@@ -1,5 +1,6 @@
 from __future__ import annotations
 from core import asset_manager
+from components.effects import Effect
 
 class Item:
     def __init__(self, item_id: str, name: str, rarity: str, sell_cost: int,
@@ -33,18 +34,20 @@ class Equipment(Item):
 
 class Consumable(Item):
     def __init__(self, item_id: str, name: str, rarity: str, sell_cost: int,
-                 image_filename: str, effect_type: str, effect_value: int, buy_cost: int = 0):
+                 image_filename: str, effects: list[dict], buy_cost: int = 0):
         super().__init__(item_id, name, rarity, sell_cost, image_filename, buy_cost, max_stack=99)
-        self.effect_type = effect_type
-        self.effect_value = effect_value
+        
+        self.effects = [Effect(**eff_data) for eff_data in effects]
 
     def use(self, target_character) -> bool:
-        if self.effect_type == 'heal':
-            target_character.current_hp = min(target_character.current_hp + self.effect_value,
-                                              target_character.max_hp)
-            print(f"{target_character.name} восстановил {self.effect_value} ХП!")
-            return True
-        return False
+        if not self.effects:
+            print(f"{self.name} не имеет эффектов!")
+            return False
+            
+        for effect in self.effects:
+            effect.apply(user=target_character, target=target_character)
+            
+        return True
 
 class Material(Item):
     def __init__(self, item_id: str, name: str, rarity: str, sell_cost: int, image_filename: str, buy_cost: int = 0):

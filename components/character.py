@@ -11,6 +11,8 @@ class Character:
         self.attack = attack
         self.resists = resists
 
+        self.active_status_effects = []
+
         self.inventory = []
 
     def take_damage(self, damage_amount: int):
@@ -20,3 +22,13 @@ class Character:
             self.current_hp = 0
 
         print(f'{self.name} получает {damage_amount} урона! Осталось {self.current_hp} здоровья')
+
+    def apply_status_effect(self, effect):
+        self.active_status_effects.append(effect)
+        effect.on_apply(self)
+
+def update_status_effects(self):
+    for effect in self.active_status_effects[:]:
+        effect.on_turn_tick(self)
+        if effect.duration <= 0:
+            self.active_status_effects.remove(effect)
