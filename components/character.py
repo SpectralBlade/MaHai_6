@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name: str, max_hp: int, attack: int, resists: list = [],  max_mana: int = 0):
+    def __init__(self, name: str, max_hp: int, attack: int, resists: list = None, max_mana: int = 0):
         self.name = name
 
         self.max_hp = max_hp
@@ -9,11 +9,9 @@ class Character:
         self.current_mana = max_mana
 
         self.attack = attack
-        self.resists = resists
+        self.resists = resists if resists is not None else [] 
 
         self.active_status_effects = []
-
-        self.inventory = []
 
     def take_damage(self, damage_amount: int):
         self.current_hp -= damage_amount
@@ -27,8 +25,8 @@ class Character:
         self.active_status_effects.append(effect)
         effect.on_apply(self)
 
-def update_status_effects(self):
-    for effect in self.active_status_effects[:]:
-        effect.on_turn_tick(self)
-        if effect.duration <= 0:
-            self.active_status_effects.remove(effect)
+    def update_status_effects(self):
+        for effect in self.active_status_effects[:]:
+            effect.on_turn_tick(self)
+            if effect.duration <= 0:
+                self.active_status_effects.remove(effect)
