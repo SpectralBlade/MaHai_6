@@ -19,8 +19,9 @@ class Item:
 
 class Equipment(Item):
     def __init__(self, item_id: str, name: str, rarity: str, sell_cost: int, 
-                 image_filename: str, stats_bonus: dict, enchantable: bool = False, buy_cost: int = 0, lore: str = ""):
+                 image_filename: str, stats_bonus: dict, equip_type: str, enchantable: bool = False, buy_cost: int = 0, lore: str = ""):
         super().__init__(item_id, name, rarity, sell_cost, image_filename, buy_cost, lore, max_stack=1)
+        self.equip_type = equip_type
         self.stats_bonus = stats_bonus
         self.enchantable = enchantable
         self.applied_enchantments = []
@@ -56,7 +57,7 @@ class Material(Item):
         super().__init__(item_id, name, rarity, sell_cost, image_filename, buy_cost, lore, max_stack=99)
 
 class QuestItem(Item):
-    def __init__(self, item_id: str, name: str, image_filename: str, lore: str = ""):
-        super().__init__(item_id, name, rarity="Quest", sell_cost=0, image_filename=image_filename, lore=lore, max_stack=1)
+    def __init__(self, item_id: str, name: str, rarity: str, image_filename: str, lore: str = ""):
+        super().__init__(item_id, name, rarity, sell_cost=0, image_filename=image_filename, lore=lore, max_stack=1)
         self.can_be_dropped = False
         self.can_be_sold = False

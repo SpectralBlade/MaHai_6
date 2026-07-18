@@ -3,7 +3,9 @@ from core.settings import *
 from core import asset_manager
 
 class Player:
-    def __init__(self, x=400, y=300):
+    def __init__(self, profile, x=400, y=300):
+        self.profile = profile
+        
         mermush = asset_manager.get_image('MERMUSH_V_PRAIME.png')
         self.image = pygame.transform.scale(mermush, (80, 80))
         self.rect = pygame.Rect(x, y, 40, 40)
