@@ -9,7 +9,7 @@ class MapState(GameState):
     def __init__(self, game):
         super().__init__(game)
 
-        self.inventory_ui = InventoryUI(self.game.profile.inventory, x=150, y=100)
+        self.inventory_ui = InventoryUI(self.game.profile, x=150, y=100)
         self.current_location = Location((20, 30, 20), (600, 300, 50, 50), (380, 50, 50, 50))
 
     def handle_events(self, events):

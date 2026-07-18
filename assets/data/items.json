@@ -1,10 +1,11 @@
 {
-    "spark_ring": {
+    "health_potion_01": {
         "type": "Equipment",
         "name": "Кольцо Искр",
         "rarity": "Rare",
         "sell_cost": 120,
         "buy_cost": 300,
+        "equip_type": "accessory",
         "image_filename": "First_Fractal.png",
         "stats_bonus": {
             "attack": 10,
@@ -13,7 +14,7 @@
         "enchantable": true,
         "lore": "Древнее кольцо, от которого исходит легкое тепло. Говорят, оно принадлежало первому магу, бросившему вызов Волосне."
     },
-    "dungeon_key": {
+    "rusty_sword": {
         "type": "QuestItem",
         "name": "Странный ключ",
         "rarity": "Quest",

@@ -20,7 +20,7 @@ class Game:
         self.running = True
         
         self.profile = Profile()
-        self.player = Player()
+        self.player = Player(self.profile)
 
         self.states = {
             'MAP': MapState(self),
