@@ -1,22 +1,23 @@
 {
-    "health_potion_01": {
-        "type": "Consumable",
-        "name": "Малое зелье лечения",
-        "rarity": "Common",
-        "sell_cost": 15,
-        "buy_cost": 30,
-        "image_filename": "First_Fractal.png",
-        "effect_type": "heal",
-        "effect_value": 30
-    },
-    "rusty_sword": {
+    "spark_ring": {
         "type": "Equipment",
-        "name": "Ржавый меч",
-        "rarity": "Common",
-        "sell_cost": 10,
-        "buy_cost": 25,
+        "name": "Кольцо Искр",
+        "rarity": "Rare",
+        "sell_cost": 120,
+        "buy_cost": 300,
         "image_filename": "First_Fractal.png",
-        "stats_bonus": {"attack": 5},
-        "enchantable": false
+        "stats_bonus": {
+            "attack": 10,
+            "max_mana": 20
+        },
+        "enchantable": true,
+        "lore": "Древнее кольцо, от которого исходит легкое тепло. Говорят, оно принадлежало первому магу, бросившему вызов Волосне."
+    },
+    "dungeon_key": {
+        "type": "QuestItem",
+        "name": "Странный ключ",
+        "rarity": "Quest",
+        "image_filename": "First_Fractal.png",
+        "lore": "Тяжелый ржавый ключ с гравировкой в виде буквы 'М'. Наверняка он открывает что-то очень важное на этой локации."
     }
 }

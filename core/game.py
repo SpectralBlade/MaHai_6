@@ -2,6 +2,7 @@ import pygame
 from core.settings import *
 from entities.player import Player
 from core import item_manager
+from core.profile import Profile
 
 from states.map_state import MapState
 from states.battle_state import BattleState
@@ -18,6 +19,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         
+        self.profile = Profile()
         self.player = Player()
 
         self.states = {
