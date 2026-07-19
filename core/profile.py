@@ -1,6 +1,6 @@
 from components.inventory import Inventory
 from components.playable_character import PlayableCharacter
-from core import item_manager
+from core import item_manager, character_manager
 
 class Profile:
     def __init__(self):
@@ -20,16 +20,10 @@ class Profile:
         if sword: self.inventory.add_item(sword, amount=1)
 
     def choose_starter(self, character_id: str):
-        if character_id == "spectrum":
-            hero = PlayableCharacter(
-                character_id="spectrum", name="Spectrum", max_hp=100, attack=15, max_mana=50
-            )
-        elif character_id == "masha":
-            hero = PlayableCharacter(
-                character_id="masha", name="Машуша", max_hp=80, attack=20, max_mana=80
-            )
-        else:
-            return
+        hero = character_manager.create_character(character_id)
+        if hero:
+            self.roster.append(hero)
+            self.party.append(hero)
 
         self.roster.append(hero)
         self.party.append(hero)

@@ -3,6 +3,7 @@ from core.settings import *
 from entities.player import Player
 from core import item_manager
 from core.profile import Profile
+from core import character_manager # <--- Добавь импорт сверху файла
 
 from states.map_state import MapState
 from states.battle_state import BattleState
@@ -12,7 +13,9 @@ from states.tutorial_state import TutorialState
 class Game:
     def __init__(self):
         pygame.init()
+
         item_manager.init()
+        character_manager.init()     
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("MaHai 6")

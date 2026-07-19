@@ -22,7 +22,10 @@ class BattleManager:
         self.btn_attack = Button(210, 460, 120, 30, 'Атака', self.font)
         self.btn_heal = Button(210, 500, 120, 30, 'Пропуск', self.font) 
 
-        self.hero_image = pygame.transform.scale(asset_manager.get_image('MERMUSH_V_PRAIME.png'), (60, 60))
+        self.party_images = {}
+        for char in self.party:
+            img = asset_manager.get_image(char.image_filename)
+            self.party_images[char.character_id] = pygame.transform.scale(img, (60, 60))
 
     def handle_event(self, event):
         if self.turn != 'PLAYER' or not self.party:
@@ -103,7 +106,7 @@ class BattleManager:
             char_x = 100
             char_y = 150 + (i * 100)
             
-            screen.blit(self.hero_image, (char_x, char_y))
+            screen.blit(self.party_images[char.character_id], (char_x, char_y))
             
             if self.turn == 'PLAYER' and i == self.current_actor_index:
                 pygame.draw.rect(screen, (0, 255, 0), (char_x, char_y, 60, 60), 3)

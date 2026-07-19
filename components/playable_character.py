@@ -2,10 +2,11 @@ from components.character import Character
 from components.item import Equipment
 
 class PlayableCharacter(Character):
-    def __init__(self, character_id: str, name: str, max_hp: int, attack: int, max_mana: int = 0):
+    def __init__(self, character_id: str, name: str, max_hp: int, attack: int, max_mana: int = 0, image_filename: str = "MERMUSH_V_PRAIME.png"):
         super().__init__(name, max_hp, attack, resists=[], max_mana=max_mana)
-        
+
         self.character_id = character_id
+        self.image_filename = image_filename 
         
         self.level = 1
         self.current_xp = 0

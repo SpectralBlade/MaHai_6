@@ -14,15 +14,9 @@ class Player:
         if not self.profile.party:
             return
             
-        leader_id = self.profile.party[0].character_id
+        leader = self.profile.party[0]
         
-        if leader_id == "spectrum":
-            img = asset_manager.get_image('MERMUSH_V_PRAIME.png')
-        elif leader_id == "masha":
-            img = asset_manager.get_image('MASHUSHA.png')
-        else:
-            img = asset_manager.get_image('fallback.png')
-            
+        img = asset_manager.get_image(leader.image_filename)
         self.image = pygame.transform.scale(img, (80, 80))
         
     def update(self):

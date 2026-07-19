@@ -1,0 +1,16 @@
+{
+    "spectrum": {
+        "name": "Spectrum",
+        "max_hp": 100,
+        "attack": 15,
+        "max_mana": 50,
+        "image_filename": "MERMUSH_V_PRAIME.png"
+    },
+    "masha": {
+        "name": "Машуша",
+        "max_hp": 80,
+        "attack": 20,
+        "max_mana": 80,
+        "image_filename": "MASHUSHA.png"
+    }
+}
