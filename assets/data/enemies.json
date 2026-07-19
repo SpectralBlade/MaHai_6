@@ -1,0 +1,20 @@
+{
+    "small_hair_blob": {
+        "name": "Мелкий комок волос",
+        "max_hp": 30,
+        "attack": 3,
+        "image_filename": "blob_small.png"
+    },
+    "medium_hair_blob": {
+        "name": "Средний комок волос",
+        "max_hp": 60,
+        "attack": 7,
+        "image_filename": "blob_medium.png"
+    },
+    "masha_unbeatable": {
+        "name": "Машуша (туториал)",
+        "max_hp": 500,
+        "attack": 25,
+        "image_filename": "MASHUSHA.png"
+    }
+}

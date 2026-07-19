@@ -73,11 +73,14 @@ class BattleManager:
         
         if len(self.enemies) == 0:
             self.level.next_wave()
+            
             if self.level.is_completed():
-                print("Бой выигран!")
+                print("Бой побежден!")
                 return 'MAP'
             else:
+                print(f"Начинается фаза {self.level.current_wave_index + 1}!")
                 self.enemies = self.level.get_current_enemies()
+                
                 self.turn = 'PLAYER'
                 self.current_actor_index = 0
                 self.selected_target = None

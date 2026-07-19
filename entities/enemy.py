@@ -3,12 +3,12 @@ from components.character import Character
 from core import asset_manager
 
 class Enemy:
-    def __init__(self):
-        self.stats = Character(name='Приспешник Машуши', max_hp=50, attack=5)
+    def __init__(self, enemy_id: str, name: str, max_hp: int, attack: int, image_filename: str):
+        self.enemy_id = enemy_id
+        self.stats = Character(name=name, max_hp=max_hp, attack=attack)
 
-        masha = asset_manager.get_image('MASHUSHA.png')
-        self.image = pygame.transform.scale(masha, (80, 80))
-
+        img = asset_manager.get_image(image_filename)
+        self.image = pygame.transform.scale(img, (80, 80))
         self.rect = self.image.get_rect() 
 
     def draw(self, screen):

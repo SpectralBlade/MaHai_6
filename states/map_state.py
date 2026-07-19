@@ -1,6 +1,7 @@
 import pygame
 from states.base_state import GameState
 from states.location import Location
+from core import level_manager
 from core.level import Level
 from entities.enemy import Enemy
 from ui.inventory_ui import InventoryUI
@@ -23,10 +24,15 @@ class MapState(GameState):
     def update(self):
         self.game.player.update()
         next_state = self.current_location.update(self.game.player)
-
+        
         if next_state == 'BATTLE':
-            test_level = Level('Тестовая арена', [[Enemy()], [Enemy(), Enemy()]])
-            self.game.change_state('BATTLE', level=test_level)
+            actual_level = level_manager.create_level("stage_1_0_tutorial")
+            
+            if actual_level:
+                self.game.change_state('BATTLE', level=actual_level)
+            else:
+                print("[ОШИБКА] Не удалось загрузить уровень. Откат на карту.")
+                self.game.player.rect.x -= 60 #
             
         elif next_state == 'NEXT_LOC':
             print("Телепортация в следующую комнату!")

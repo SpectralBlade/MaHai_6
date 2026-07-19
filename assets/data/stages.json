@@ -1,0 +1,70 @@
+{
+    "stage_1_0_tutorial": {
+        "name": "Tutorial",
+        "phases_count": 3,
+        "team_size_limit": 3,
+        "phases": [
+            {
+                "show_boss_stage_warning": false,
+                "show_elite_reinforcements_warning": false,
+                "enemy_pool": {
+                    "small_hair_blob": 1
+                },
+                "passive_effects": null
+            },
+            {
+                "show_boss_stage_warning": false,
+                "show_elite_reinforcements_warning": false,
+                "enemy_pool": {
+                    "small_hair_blob": 2,
+                    "medium_hair_blob": 1
+                },
+                "passive_effects": null
+            },
+            {
+                "show_boss_stage_warning": true,
+                "show_elite_reinforcements_warning": false,
+                "enemy_pool": {
+                    "masha_unbeatable": 1,
+                    "medium_hair_blob": 2
+                },
+                "passive_effects": {
+                    "player_team_attack_lowered_percent": 0.3
+                }
+            }
+        ],
+        "special_conditions": {
+            "no_throwable_items": "False",
+            "no_consumables": "False"
+
+        },
+        "heroes_xp_modifier": 1.0,
+        "physical_awards": {
+            "first_clear_award": {
+                "item_id": "gold_coin",
+                "amount": 50,
+                "weight": "None"
+            },
+            "main_reward_pool": [
+                {
+                    "item_id": "small_hair_string", 
+                    "amount": 1,
+                    "weight": 0.5
+                    
+                },
+                {
+                    "item_id": "small_hair_string",
+                    "amount": 2,
+                    "weight": 0.25
+                },
+
+                {
+                    "item_id": "big_hair_string",
+                    "amount": 1,
+                    "weight": 0.25
+                }
+            ]
+        }
+    }
+}
+

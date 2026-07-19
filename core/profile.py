@@ -24,6 +24,3 @@ class Profile:
         if hero:
             self.roster.append(hero)
             self.party.append(hero)
-
-        self.roster.append(hero)
-        self.party.append(hero)
