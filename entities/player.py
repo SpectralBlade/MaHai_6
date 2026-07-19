@@ -4,12 +4,26 @@ from core import asset_manager
 
 class Player:
     def __init__(self, profile, x=400, y=300):
-        self.profile = profile
+        self.profile = profile 
         
-        mermush = asset_manager.get_image('MERMUSH_V_PRAIME.png')
-        self.image = pygame.transform.scale(mermush, (80, 80))
         self.rect = pygame.Rect(x, y, 40, 40)
         self.speed = 5
+        self.image = None
+
+    def update_avatar(self):
+        if not self.profile.party:
+            return
+            
+        leader_id = self.profile.party[0].character_id
+        
+        if leader_id == "spectrum":
+            img = asset_manager.get_image('MERMUSH_V_PRAIME.png')
+        elif leader_id == "masha":
+            img = asset_manager.get_image('MASHUSHA.png')
+        else:
+            img = asset_manager.get_image('fallback.png')
+            
+        self.image = pygame.transform.scale(img, (80, 80))
         
     def update(self):
         keys = pygame.key.get_pressed()

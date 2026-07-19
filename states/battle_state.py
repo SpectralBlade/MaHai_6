@@ -8,7 +8,7 @@ class BattleState(GameState):
 
     def enter(self, **kwargs):
         level = kwargs.get('level')
-        self.battle_manager = BattleManager(self.game.player, level)
+        self.battle_manager = BattleManager(self.game.profile, level)
 
     def handle_events(self, events):
         for event in events:
@@ -18,11 +18,14 @@ class BattleState(GameState):
     def update(self):
         if not self.battle_manager:
             return
-
+            
         result = self.battle_manager.update()
         
         if result == 'MAP':
+            self.game.player.rect.x -= 60 
+            
             self.game.change_state('MAP')
+            
         elif result == 'GAME_OVER':
             self.game.change_state('GAME_OVER')
 

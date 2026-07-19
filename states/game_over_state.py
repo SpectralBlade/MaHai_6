@@ -10,12 +10,20 @@ class GameOverState(GameState):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    self.game.player.stats.current_hp = self.game.player.stats.max_hp
+                    
+                    for char in self.game.profile.party:
+                        char.current_hp = char.total_max_hp
+                        
+                    self.game.player.rect.x = 400
+                    self.game.player.rect.y = 300
+                    
                     self.game.change_state('MAP')
 
     def draw(self, screen):
         screen.fill((100, 0, 0)) 
+        
         game_over_text = self.font.render('Кусты поглотили вас...', True, (255, 255, 255))
-        press_space = self.font.render('Нажмите ПРОБЕЛ, чтобы продолжить', True, (255, 255, 255))
+        press_space = self.font.render('Нажмите ПРОБЕЛ для возрождения', True, (255, 255, 255))
+        
         screen.blit(press_space, (200, 200))
         screen.blit(game_over_text, (200, 300))

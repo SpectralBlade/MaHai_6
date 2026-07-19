@@ -7,6 +7,7 @@ from core.profile import Profile
 from states.map_state import MapState
 from states.battle_state import BattleState
 from states.game_over_state import GameOverState
+from states.tutorial_state import TutorialState
 
 class Game:
     def __init__(self):
@@ -14,7 +15,7 @@ class Game:
         item_manager.init()
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Mermush RPG")
+        pygame.display.set_caption("MaHai 6")
         
         self.clock = pygame.time.Clock()
         self.running = True
@@ -25,10 +26,11 @@ class Game:
         self.states = {
             'MAP': MapState(self),
             'BATTLE': BattleState(self),
-            'GAME_OVER': GameOverState(self)
+            'GAME_OVER': GameOverState(self),
+            'TUTORIAL_SCREEN': TutorialState(self)
         }
         
-        self.current_state = self.states['MAP']
+        self.current_state = self.states['TUTORIAL_SCREEN']
         self.current_state.enter()
 
     def change_state(self, next_state_name: str, **kwargs):
@@ -36,7 +38,7 @@ class Game:
             self.current_state = self.states[next_state_name]
             self.current_state.enter(**kwargs)
         else:
-            print(f"[ОШИБКА] Состояние {next_state_name} не существует в реестре игры!")
+            print(f"Состояние {next_state_name} не существует в реестре игры!")
 
     def run(self):
         while self.running:

@@ -7,26 +7,29 @@ class Profile:
         self.gold = 100
         self.inventory = Inventory(capacity=20)
         
-        self.roster: list[PlayableCharacter] = [] 
+        self.roster: list[PlayableCharacter] = []  
         self.party: list[PlayableCharacter] = []   
 
-        self._init_starting_profile()
+        self._init_starting_items()
 
-    def _init_starting_profile(self):
-
-        main_hero = PlayableCharacter(
-            character_id="hero_01", 
-            name="Spectrum", 
-            max_hp=100, 
-            attack=15, 
-            max_mana=50
-        )
-        
-        self.roster.append(main_hero)
-        self.party.append(main_hero)
-
+    def _init_starting_items(self):
         potion = item_manager.create_item('health_potion_01')
         if potion: self.inventory.add_item(potion, amount=5)
             
         sword = item_manager.create_item('rusty_sword')
         if sword: self.inventory.add_item(sword, amount=1)
+
+    def choose_starter(self, character_id: str):
+        if character_id == "spectrum":
+            hero = PlayableCharacter(
+                character_id="spectrum", name="Spectrum", max_hp=100, attack=15, max_mana=50
+            )
+        elif character_id == "masha":
+            hero = PlayableCharacter(
+                character_id="masha", name="Машуша", max_hp=80, attack=20, max_mana=80
+            )
+        else:
+            return
+
+        self.roster.append(hero)
+        self.party.append(hero)
