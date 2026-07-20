@@ -8,7 +8,9 @@ class Profile:
         self.inventory = Inventory(capacity=20)
         
         self.roster: list[PlayableCharacter] = []  
-        self.party: list[PlayableCharacter] = []   
+        self.party: list[PlayableCharacter] = []  
+
+        self.cleared_levels = set() 
 
         self._init_starting_items()
 
