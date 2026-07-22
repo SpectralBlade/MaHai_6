@@ -2,7 +2,7 @@
     "spectrum": {
         "name": "Spectrum",
         "max_hp": 100,
-        "attack": 15,
+        "attack": 1500,
         "max_mana": 50,
         "image_filename": "MERMUSH_V_PRAIME.png"
     },

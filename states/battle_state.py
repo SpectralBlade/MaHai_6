@@ -21,10 +21,9 @@ class BattleState(GameState):
             
         result = self.battle_manager.update()
         
-        if result == 'MAP':
+        if result == 'VICTORY':
             self.game.player.rect.x -= 60 
-            
-            self.game.change_state('MAP')
+            self.game.change_state('VICTORY_SCREEN', level=self.battle_manager.level)
             
         elif result == 'GAME_OVER':
             self.game.change_state('GAME_OVER')

@@ -13,6 +13,7 @@ from states.map_state import MapState
 from states.battle_state import BattleState
 from states.game_over_state import GameOverState
 from states.tutorial_state import TutorialState
+from states.victory_state import VictoryState
 
 class Game:
     def __init__(self):
@@ -36,7 +37,8 @@ class Game:
             'MAP': MapState(self),
             'BATTLE': BattleState(self),
             'GAME_OVER': GameOverState(self),
-            'TUTORIAL_SCREEN': TutorialState(self)
+            'TUTORIAL_SCREEN': TutorialState(self),
+            'VICTORY_SCREEN': VictoryState(self)
         }
         
         self.current_state = self.states['TUTORIAL_SCREEN']

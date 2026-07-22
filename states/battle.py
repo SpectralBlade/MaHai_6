@@ -78,7 +78,7 @@ class BattleManager:
                 print("Бой побежден!")
                 for char in self.party:
                     char.current_hp = char.total_max_hp
-                return 'MAP'
+                return 'VICTORY'
             else:
                 print(f"Начинается фаза {self.level.current_wave_index + 1}!")
                 self.enemies = self.level.get_current_enemies()

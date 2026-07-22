@@ -1,0 +1,84 @@
+{
+    "1-1_after_tutorial_dorm": {
+        "comment": "Травка у общаги после туториала сразу",
+        "map_grid_background": "test.png",
+        "map_size_x": 5000,
+        "map_size_y": 5000,
+        "previous_location": null,
+        "next_location": "1-1_1-2_corridor",
+        "barriers": [
+            {"x": 0, "y": -50, "width": 2000, "height": 50}, 
+            {"x": -50, "y": 0, "width": 50, "height": 1500},
+            {"x": 400, "y": 300, "width": 150, "height": 100}
+        ],
+        "interactibles": {
+            "npcs": [
+                {"id": "npc_1_maxim", "x": 250, "y": 250}
+            ],
+            "objects": [
+                {"id": "basic_market", "x": 250, "y": 300}
+            ],
+            "portals": [
+                {
+                    "type": "map_transition",
+                    "x": 250, "y": 400,
+                    "target_location_id": "1-1_1-2_corridor",
+                    "target_spawn_x": 100,
+                    "target_spawn_y": 500
+                },
+                {
+                    "type": "battle_trigger",
+                    "x": 400, "y": 400,
+                    "target_stage_id": "stage_1_0_tutorial"
+                }
+            ]
+        },
+        "accessible_from_map": true,
+        "position_on_global_map_x": 250,
+        "position_on_global_map_y": 500,
+        "global_map_waypoint_name": "Башня МАИ",
+        "global_map_waypoint_desc": "Начало начал."
+    },
+    "1-1_1-2_corridor": {
+        "comment": "Проходка до 1-2, спокойная улица",
+        "map_grid_background": "test2.png",
+        "map_size_x": 7000,
+        "map_size_y": 1000,
+        "previous_location": "1-1_after_tutorial_dorm",
+        "next_location": "1-2_dorm_street_peaceful",
+        "barriers": [
+            {"x": 0, "y": -50, "width": 2000, "height": 50}, 
+            {"x": -50, "y": 0, "width": 50, "height": 1500},
+            {"x": 400, "y": 300, "width": 150, "height": 100}
+        ],
+        "interactibles": {
+            "npcs": [
+                {"id": "npc_1_maxim", "x": 250, "y": 250}
+            ],
+            "objects": [
+                {"id": "weird_grass", "x": 250, "y": 300}
+            ],
+            "portals": [
+                {
+                    "type": "map_transition",
+                    "x": 250, "y": 400,
+                    "target_location_id": "1-2_dorm_street_peaceful",
+                    "target_spawn_x": 100,
+                    "target_spawn_y": 500
+                },
+                {
+                    "type": "map_transition",
+                    "x": 250, "y": 400,
+                    "target_location_id": "1-1_after_tutorial_dorm",
+                    "target_spawn_x": 100,
+                    "target_spawn_y": 500
+                }
+            ]
+        },
+        "accessible_from_map": false,
+        "position_on_global_map_x": null,
+        "position_on_global_map_y": null,
+        "global_map_waypoint_name": null,
+        "global_map_waypoint_desc": null
+    }
+}
