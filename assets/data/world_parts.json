@@ -9,7 +9,7 @@
         "barriers": [
             {"x": 0, "y": -50, "width": 2000, "height": 50}, 
             {"x": -50, "y": 0, "width": 50, "height": 1500},
-            {"x": 400, "y": 300, "width": 150, "height": 100}
+            {"x": 600, "y": 600, "width": 1500, "height": 1000}
         ],
         "interactibles": {
             "npcs": [

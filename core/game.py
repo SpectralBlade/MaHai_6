@@ -4,10 +4,7 @@ from entities.player import Player
 from core import item_manager
 from core.profile import Profile
 
-from core import item_manager
-from core import character_manager
-from core import enemy_manager
-from core import level_manager
+from core import item_manager, character_manager, enemy_manager, level_manager, location_manager
 
 from states.map_state import MapState
 from states.battle_state import BattleState
@@ -23,6 +20,7 @@ class Game:
         character_manager.init()
         enemy_manager.init()
         level_manager.init()   
+        location_manager.init()
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("MaHai 6")
